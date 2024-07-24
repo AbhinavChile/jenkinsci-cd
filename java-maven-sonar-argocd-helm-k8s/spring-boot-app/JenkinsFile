@@ -8,7 +8,10 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        sh 'echo passed'
+        checkout([$class: 'GitSCM',
+        	branches: [[name: 'main']],
+		userRemoteConfigs: [[url: 'https://github.com/AbhinavChile/jenkinsci-cd.git']]])
+        //sh 'echo passed'
         //git branch: 'main', url: 'https://github.com/AbhinavChile/jenkinsci-cd.git'
       }
     }
